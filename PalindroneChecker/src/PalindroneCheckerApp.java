@@ -5,19 +5,15 @@ public class PalindroneCheckerApp {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Input text: ");
+        System.out.print("Input : ");
         String input = scanner.nextLine();
 
-        String reversed = "";
-
-        // Iterate from the last character to the first
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed += input.charAt(i);
-        }
+        // Reverse using StringBuilder (efficient method)
+        String reversed = new StringBuilder(input).reverse().toString();
 
         boolean isPalindrome = input.equals(reversed);
 
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+        System.out.println("Is Palindrome? : " + isPalindrome);
 
         scanner.close();
     }
