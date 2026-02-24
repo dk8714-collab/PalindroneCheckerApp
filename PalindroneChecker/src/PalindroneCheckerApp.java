@@ -1,20 +1,34 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class PalindroneCheckerApp {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        // Declare and initialize the input string
+        String input = "noon";
 
-        System.out.print("Input : ");
-        String input = scanner.nextLine();
+        // Create a Stack to store characters
+        Stack<Character> stack = new Stack<>();
 
-        // Reverse using StringBuilder (efficient method)
-        String reversed = new StringBuilder(input).reverse().toString();
+        // Push each character of the string into the stack
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
 
-        boolean isPalindrome = input.equals(reversed);
+        // Assume palindrome initially
+        boolean isPalindrome = true;
 
+        // Iterate again through original string
+        for (char c : input.toCharArray()) {
+
+            // Compare with top of stack (reverse order)
+            if (c != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
-
-        scanner.close();
     }
 }
